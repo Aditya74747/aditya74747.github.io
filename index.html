@@ -21,7 +21,7 @@
 @font-face{font-family:"Martian Mono";font-style:normal;font-weight:100 800;font-display:swap;src:url("assets/fonts/martian-mono.woff2") format("woff2")}
 @font-face{font-family:"Caveat";font-style:normal;font-weight:400 700;font-display:swap;src:url("assets/fonts/caveat.woff2") format("woff2")}
 :root{
-  /* Layout idea (after Kush Vankawala's portfolio): a calm, light model card. Soft tinted cards, thin lines, one violet accent. Two scroll-driven chapters (career chart, agent case); everything else sits still. */
+  /* Layout idea (after Kush Vankawala's portfolio): a calm, light model card. Soft tinted cards, thin lines, one violet accent. One scroll-driven chapter (agent case); everything else sits still. */
   --paper:#FAFAF7; --sheet:#FFFFFF; --soft:#F2F2ED; --ink:#16191E; --ink-2:#646A74; --line:#E5E5DF;
   --plan:#5B3FD9; --plan-ink:#FFFFFF; --marker:#F0B429;
   --ok:#2C8F5E; --ok-ink:#1D6B44; --warn:#A96B08; --risk:#C64B41;
@@ -171,7 +171,7 @@ h1,h2,h3{text-wrap:balance}
 .stick{padding:clamp(64px,10vh,112px) 0}
 .anim [data-pin]{position:relative}
 .anim [data-pin] .stick{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;padding:var(--bar) 0 0;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-.anim .career{height:340vh}.anim .lora{height:320vh}
+.anim .lora{height:320vh}
 .anim [data-pin].flat{height:auto}
 .anim [data-pin].flat .stick{position:static;height:auto;min-height:0;padding:clamp(64px,10vh,112px) 0;overflow:visible}
 
@@ -418,13 +418,16 @@ figcaption{margin-top:10px;font-size:.85rem;color:var(--ink-2)}
 @keyframes drift{from{translate:0 -8px}to{translate:0 10px}}
 .anim .jl{animation:drift 11s ease-in-out infinite alternate}
 .jobs{display:grid;gap:14px}
-.jobs li{--gl:rgba(255,255,255,.75);display:grid;grid-template-columns:30px 168px minmax(0,1fr);gap:6px 26px;align-items:start;padding:26px 28px;border-radius:24px;border:1px solid color-mix(in srgb,var(--ink) 9%,transparent);background:color-mix(in srgb,var(--sheet) 48%,transparent);-webkit-backdrop-filter:blur(1.5px) saturate(1.2);backdrop-filter:blur(1.5px) saturate(1.2);box-shadow:inset 0 1px 0 var(--gl),0 16px 36px -26px rgba(22,25,30,.3)}
-:root[data-mode="dev"] .jobs li{--gl:rgba(255,255,255,.05)}
-.jobs li>svg{width:26px;height:26px;stroke:var(--plan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.jobs>li{--gl:rgba(255,255,255,.75);display:grid;grid-template-columns:30px 168px minmax(0,1fr);gap:6px 26px;align-items:start;padding:26px 28px;border-radius:24px;border:1px solid color-mix(in srgb,var(--ink) 9%,transparent);background:color-mix(in srgb,var(--sheet) 48%,transparent);-webkit-backdrop-filter:blur(1.5px) saturate(1.2);backdrop-filter:blur(1.5px) saturate(1.2);box-shadow:inset 0 1px 0 var(--gl),0 16px 36px -26px rgba(22,25,30,.3)}
+:root[data-mode="dev"] .jobs>li{--gl:rgba(255,255,255,.05)}
+.jobs>li>svg{width:26px;height:26px;stroke:var(--plan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .when{font-family:var(--mono);font-size:.72rem;color:var(--ink-2);padding-top:6px}
 .jobs h3{font-size:clamp(1.2rem,2vw,1.45rem)}
 :root[data-mode="dev"] .jobs h3{font-size:1.05rem}
 .jobs p.what{max-width:62ch;color:var(--ink-2)}
+.jobs .pts{display:grid;gap:8px;margin-top:14px;max-width:62ch;color:var(--ink-2)}
+.jobs .pts li{position:relative;padding-left:18px}
+.jobs .pts li::before{content:"";position:absolute;left:2px;top:.66em;width:6px;height:6px;border-radius:50%;background:var(--plan)}
 
 /* hackathon case */
 .lora-in{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,60px);align-items:center}
@@ -489,7 +492,7 @@ figcaption{margin-top:10px;font-size:.85rem;color:var(--ink-2)}
 .rows{display:grid;gap:6px;padding:12px}
 .rows li{display:flex;align-items:center;gap:9px;font:400 .62rem/1.3 var(--mono);border:1px solid var(--line);border-radius:7px;padding:7px 9px;color:var(--ink-2);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s}
 .rows li b{font-weight:500;color:var(--ink)}
-.rows li i{font-style:normal;font-size:.58rem;padding:2px 0;border-radius:3px;background:var(--ink);color:var(--paper);flex:none;width:4.6em;text-align:center}
+.rows li i{font-style:normal;font-size:.58rem;padding:2px 5px;border-radius:3px;background:var(--ink);color:var(--paper);flex:none;min-width:5.6em;text-align:center}
 .anim .pcard.live .rows li{animation:rowlit 2.6s ease-in-out infinite;animation-delay:calc(var(--i)*.4s)}
 @keyframes rowlit{0%,45%,100%{border-color:var(--line)}15%{border-color:var(--plan)}}
 
@@ -526,7 +529,11 @@ figcaption{margin-top:10px;font-size:.85rem;color:var(--ink-2)}
 .edu>li{background:var(--sheet);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,32px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px 48px;align-items:start}
 .edu h3{font-size:clamp(1.25rem,2.2vw,1.5rem);font-weight:500;letter-spacing:-.02em}
 :root[data-mode="dev"] .edu h3{font-size:1.05rem;letter-spacing:0;font-weight:600}
-.edu>li>p{color:var(--ink-2)}
+.edu>li>p,.edu .muted{color:var(--ink-2)}
+.grade{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:16px;font-size:.92rem;color:var(--ink-2)}
+.grade b{font-family:var(--head);font-weight:500;font-size:1.6rem;line-height:1;letter-spacing:-.02em;color:var(--plan);font-variant-numeric:tabular-nums}
+.grade small{flex-basis:100%;font-family:var(--mono);font-size:.64rem}
+.edu .tools{margin-top:16px}
 .roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .role{background:var(--t2);border-radius:16px;padding:16px 18px}
 :root[data-mode="dev"] .role{border:1px solid var(--line)}
@@ -724,8 +731,8 @@ html.covered{overflow:hidden}
   .strip-in li:hover{color:var(--ink)}
   .trio li:hover{border-top-color:var(--ink)}
   .trio li:hover svg{transform:translateY(-4px)}
-  .jobs li.lift:hover{box-shadow:inset 0 1px 0 var(--gl),var(--shadow);background:color-mix(in srgb,var(--sheet) 62%,transparent)}
-  .jobs li:hover>svg{transform:translateY(-3px)}
+  .jobs>li.lift:hover{box-shadow:inset 0 1px 0 var(--gl),var(--shadow);background:color-mix(in srgb,var(--sheet) 62%,transparent)}
+  .jobs>li:hover>svg{transform:translateY(-3px)}
   .pcard .tools li:hover{background:var(--ink)}
   .pcard:hover .mapviz img + img{clip-path:circle(95% at 52% 56%)}
   .pcard:hover .mapviz img{transform:scale(1.05)}
@@ -810,8 +817,8 @@ html.covered{overflow:hidden}
   .g-body{padding-bottom:18px}
   .g-over{bottom:18px}
   .readout span{min-height:4.2em;font-size:.9rem}
-  .jobs li{grid-template-columns:30px minmax(0,1fr);gap:4px 14px;padding:20px 18px;border-radius:20px}
-  .jobs li>div{grid-column:1/-1;margin-top:6px}
+  .jobs>li{grid-template-columns:30px minmax(0,1fr);gap:4px 14px;padding:20px 18px;border-radius:20px}
+  .jobs>li>div{grid-column:1/-1;margin-top:6px}
   .jl{width:96%;right:-12%}
   .lora-in{grid-template-columns:minmax(0,1fr);gap:16px;align-content:center}
   .lora-vis{order:-1}
@@ -893,7 +900,7 @@ html.covered{overflow:hidden}
 @media (hover:hover){.anim .pcard:hover .acc i::after{transform:none}}
 .pcard .more.gh{margin-top:4px}
 /* 88%: eight full segments, one partly filled, one empty */
-.v-seg i.part{background:linear-gradient(90deg,var(--ink) 80%,color-mix(in srgb,var(--ink) 16%,transparent) 80%)}
+.v-seg i.part{background:linear-gradient(90deg,var(--ink) var(--pf,80%),color-mix(in srgb,var(--ink) 16%,transparent) var(--pf,80%))}
 .v-seg i.off,.v-seg i.off:last-child{background:color-mix(in srgb,var(--ink) 16%,transparent)}
 /* link out to GitHub after the scroll chapter */
 .ghcard{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px;padding:clamp(22px,3vw,34px);border-radius:28px;background:var(--sheet);border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -950,12 +957,11 @@ html.covered{overflow:hidden}
           <div>
             <p class="lbl">about me</p>
             <a style="--n:0" href="#about" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M5 2.5H15V17.5H5ZM10 5.6a2 2 0 1 0 .01 0M6.8 13.6c.6-2.1 1.8-3 3.2-3s2.6.9 3.2 3"/></svg></span><span class="tx"><b>Model overview</b><small>Who I am, in four minutes</small></span></a>
-            <a style="--n:1" href="#numbers" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M2.5 16.5h15M4.5 16V10h3v6M8.5 16V4.5h3V16M12.5 16V7.5h3V16"/></svg></span><span class="tx"><b>In numbers</b><small>Four figures, each with its source</small></span></a>
+            <a style="--n:1" href="#numbers" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M2.5 16.5h15M4.5 16V10h3v6M8.5 16V4.5h3V16M12.5 16V7.5h3V16"/></svg></span><span class="tx"><b>In numbers</b><small>Business, models, safety and study</small></span></a>
           </div>
           <div>
-            <p class="lbl">timeline</p>
-            <a style="--n:2" href="#career" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M2.5 2v15.5M4.5 3.5h5.5V6H4.5ZM7.5 8.5h7.5V11H7.5ZM11 13.5h6V16h-6Z"/></svg></span><span class="tx"><b>Training history</b><small>Scroll from 2023 to today</small></span></a>
-            <a style="--n:3" href="#flow" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M5 3a2 2 0 1 0 .01 0M15 8a2 2 0 1 0 .01 0M5 13a2 2 0 1 0 .01 0M7 5.2c3.6.1 5.6 1 6.4 3M13.4 11.8c-.8 2-2.8 3-6.4 3.1"/></svg></span><span class="tx"><b>How I work</b><small>From raw data to a grounded answer</small></span></a>
+            <p class="lbl">method</p>
+            <a style="--n:2" href="#flow" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M5 3a2 2 0 1 0 .01 0M15 8a2 2 0 1 0 .01 0M5 13a2 2 0 1 0 .01 0M7 5.2c3.6.1 5.6 1 6.4 3M13.4 11.8c-.8 2-2.8 3-6.4 3.1"/></svg></span><span class="tx"><b>How I work</b><small>From raw data to a grounded answer</small></span></a>
           </div>
         </div>
         <a class="mp-feat" href="#about"><img src="assets/aditya-danube.webp" alt=""><span><b>An ML engineer who shows his work</b><small>Read the overview</small></span></a>
@@ -964,7 +970,7 @@ html.covered{overflow:hidden}
         <div class="mp-cols">
           <div>
             <p class="lbl">experience</p>
-            <a style="--n:0" href="#work" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M2.5 7h15v9.5h-15ZM7.5 7V4.5h5V7M2.5 11.2h15M9 11.2v1.6h2v-1.6"/></svg></span><span class="tx"><b>Work delivered</b><small>Two companies and a research project</small></span></a>
+            <a style="--n:0" href="#work" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M2.5 7h15v9.5h-15ZM7.5 7V4.5h5V7M2.5 11.2h15M9 11.2v1.6h2v-1.6"/></svg></span><span class="tx"><b>Work delivered</b><small>Leejam, Accenture and Skyrise</small></span></a>
             <a style="--n:1" href="#skills" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M10 7.8a2.2 2.2 0 1 0 .01 0M10 2.5v3M10 14.5v3M3.2 6.3l2.8 1.6M16.8 6.3 14 7.9M3.2 13.7 6 12.1M16.8 13.7 14 12.1"/></svg></span><span class="tx"><b>Feature set</b><small>Skills, tools and languages</small></span></a>
           </div>
           <div>
@@ -983,8 +989,9 @@ html.covered{overflow:hidden}
             <a style="--n:1" href="#p-rag" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M5 2.5h7l3 3v12H5ZM12 2.5v3h3M8 9.5h4.5M8 12.5h4.5M8 15.5h2.5"/></svg></span><span class="tx"><b>Policies and compliance RAG</b><small>Offline answers with citations</small></span></a>
           </div>
           <div>
-            <p class="lbl">research</p>
-            <a style="--n:2" href="#p-senti" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M3 4h14v9.5H9.5L6 16.5v-3H3ZM7.5 7.5v.1M12.5 7.5v.1M7.5 10.2c1.5 1.4 3.5 1.4 5 0"/></svg></span><span class="tx"><b>Sentiment analysis with LLMs</b><small>88% with a fine-tuned Gemma</small></span></a>
+            <p class="lbl">models and apps</p>
+            <a style="--n:2" href="#p-legal" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M10 3v14M6 17h8M4 6h12M4 6l-2 5c.6 1.3 3.4 1.3 4 0ZM16 6l-2 5c.6 1.3 3.4 1.3 4 0Z"/></svg></span><span class="tx"><b>Legal Contract Analysis AI</b><small>48 clause types, 89.8% accuracy</small></span></a>
+            <a style="--n:3" href="#p-ims" class="glowy"><span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20"><path pathLength="1" d="M3 6.5 10 3l7 3.5v7L10 17l-7-3.5ZM3 6.5 10 10l7-3.5M10 10v7"/></svg></span><span class="tx"><b>AutoParts Inventory System</b><small>Java, MySQL, triggers</small></span></a>
           </div>
         </div>
         <a class="mp-feat plain" href="#p-agent" style="background:var(--t3)"><span><small>scroll chapter</small><b>Watch the agent ask before it acts</b></span></a>
@@ -1018,8 +1025,8 @@ html.covered{overflow:hidden}
     <div class="wrap hero-in">
       <div>
         <p class="pill" data-h style="--d:0"><span class="dot" aria-hidden="true"></span>Inference ready. Open to ML and GenAI roles.</p>
-        <h1 data-h style="--d:1">Aditya Ghatage <span data-dev="$&nbsp;ollama run aditya">I build AI that cites its sources and asks before it acts.</span></h1>
-        <p class="lede" data-h style="--d:2">Machine learning engineer and M.Sc. student in Stuttgart. About two years of churn models, LLM pipelines and AI agents, from Pune to Riyadh. This site is my model card.</p>
+        <h1 data-h style="--d:1">Aditya Ghatage <span data-dev="$&nbsp;ollama run aditya">Turning data into decisions, and models into products.</span></h1>
+        <p class="lede" data-h style="--d:2">Machine learning engineer and M.Sc. student in Stuttgart. About 3+ years of churn models, LLM pipelines and AI agents. This site is my model card.</p>
         <div class="cta" data-h style="--d:3">
           <a class="btn primary go" href="#contact">Get in touch<i class="arr" aria-hidden="true"></i></a>
           <a class="btn go" href="#projects">See the projects<i class="arr" aria-hidden="true"></i></a>
@@ -1045,11 +1052,11 @@ html.covered{overflow:hidden}
     <div class="wrap strip-in" data-r="up">
       <p>Studied, worked and published at</p>
       <ul>
-        <li>HFT Stuttgart</li>
-        <li>Savitribai Phule Pune University</li>
+        <li>Hochschule für Technik Stuttgart</li>
+        <li>Pune University</li>
+        <li>Leejam</li>
         <li>Accenture</li>
-        <li>Leejam Sports</li>
-        <li>Copyright Office, India</li>
+        <li>Skyrise</li>
       </ul>
     </div>
   </div>
@@ -1065,7 +1072,7 @@ html.covered{overflow:hidden}
         <p class="big">I build machine learning systems you can check: models with a clear metric, answers with a source, and agents that ask before they change anything.</p>
         <p>Where does this answer come from, and what happens if it's wrong?</p>
         <p><span class="hl">It started in my B.E. with sentiment analysis on 1.6 million tweets, which became a co-authored paper and a registered software copyright.</span></p>
-        <p>Since then I've built churn-prediction models on the behaviour of more than 250,000 members at Leejam Sports in Riyadh, and added AI features and chatbots to enterprise apps on Azure at Accenture. Now I'm doing my M.Sc. in Software Technology at HFT Stuttgart and building AI agents and privacy-first RAG systems on the side.</p>
+        <p>During my degree I worked remotely at Skyrise Education, predicting which students would enrol or drop out. Since then I've built churn-prediction models on the behaviour of more than 250,000 members at Leejam Sports in Riyadh (94% of the high-risk members we targeted stayed), and added AI features and chatbots to enterprise apps on Azure at Accenture. Now I'm doing my M.Sc. in Software Technology at HFT Stuttgart and building AI agents and privacy-first RAG systems on the side.</p>
       </div>
       <figure data-r="up" style="--d:1">
         <img src="assets/aditya-budapest.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Aditya in a striped blue shirt leaning on a stone wall by the Danube, with the Hungarian Parliament behind him">
@@ -1086,13 +1093,13 @@ html.covered{overflow:hidden}
       </li>
       <li>
         <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 2.5 C18 7 19 14 17 19.5 H9 C7 14 8 7 13 2.5 Z M9 15 L4.5 20.5 H9 M17 15 L21.5 20.5 H17 M11 22.5 L13 24.5 L15 22.5"/><circle cx="13" cy="10" r="2"/></svg>
-        <h3>I can ship it</h3>
-        <p>REST APIs, Docker, Azure App Services and Functions, CI/CD. A model only counts once someone can use it.</p>
+        <h3>I take it to production</h3>
+        <p>Churn models running in production, AI features shipped on Azure through CI/CD, and a real-time pipeline that feeds a live app. A model creates value only once people use it.</p>
       </li>
       <li>
         <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 2.5 L21.5 6 V12.5 C21.5 18 17.5 22 13 23.5 C8.5 22 4.5 18 4.5 12.5 V6 Z M9 12.8 L12 15.8 L17.5 10"/></svg>
-        <h3>I make it behave</h3>
-        <p>Answers with citations, human approval for risky actions, audit logs and tests. This site has a limitations section too.</p>
+        <h3>I make it safe to rely on</h3>
+        <p>Answers that cite their source, agents that wait for a human before changing data, and sensitive data masked before analysis. My agent's latest benchmark: 100% on safety, 0 unsafe actions.</p>
       </li>
     </ul>
   </section>
@@ -1152,71 +1159,39 @@ html.covered{overflow:hidden}
     <header class="hd">
       <p class="lbl"><span><b>03</b> in numbers</span></p>
       <h2 data-dev="metrics.json">In numbers</h2>
-      <p class="sub" data-dev="4 keys">Four figures, each with its source.</p>
+      <p class="sub" data-dev="4 keys">Business, models, safety and study. One number each, with its source.</p>
     </header>
     <ul class="mcards" data-stagger="up">
       <li class="mcard lift glowy">
         <div class="mviz" style="--tint:var(--t1)" aria-hidden="true"><div class="v-team"><i></i><i></i><i class="self"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="self"></i><i></i><i></i><i></i><i></i><i class="self"></i></div></div>
-        <b data-count="250000" data-dec="0" data-sep data-suf="+">250,000+</b>
-        <span>members whose behaviour fed my churn-prediction models</span>
-        <ul class="src"><li>Leejam Sports, Riyadh</li><li>2025 to 2026</li></ul>
+        <b data-count="94" data-dec="0" data-suf="%">94%</b>
+        <span>of the high-risk members targeted by my churn models stayed with the company</span>
+        <ul class="src"><li>Leejam Sports, Riyadh</li><li>250,000+ members</li></ul>
       </li>
       <li class="mcard lift glowy">
-        <div class="mviz" style="--tint:var(--t2)" aria-hidden="true"><div class="v-seg"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="part"></i><i class="off"></i></div></div>
-        <b data-count="88" data-dec="0" data-suf="%">88%</b>
-        <span>accuracy of my fine-tuned Gemma on 1.6M tweets, against 81% for VADER</span>
-        <ul class="src"><li>Research project, SPPU</li><li>registered 2024</li></ul>
+        <div class="mviz" style="--tint:var(--t2)" aria-hidden="true"><div class="v-seg"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="part" style="--pf:98%"></i><i class="off"></i></div></div>
+        <b data-count="89.8" data-dec="1" data-suf="%">89.8%</b>
+        <span>test accuracy of my fine-tuned DistilBERT across 48 types of legal clause</span>
+        <ul class="src"><li>Legal Contract Analysis AI</li><li>20,744 clauses</li></ul>
       </li>
       <li class="mcard lift glowy">
         <div class="mviz" style="--tint:var(--t3)" aria-hidden="true"><div class="v-mon"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         <b data-count="100" data-dec="0" data-suf="%">100%</b>
         <span>safety score on a 14-task agent benchmark, with 0 unsafe actions run</span>
-        <ul class="src"><li>MCP Agent Database</li><li>local Qwen3 8B</li></ul>
+        <ul class="src"><li>MCP Agent Database</li><li>110 tests</li></ul>
       </li>
       <li class="mcard lift glowy">
-        <div class="mviz" style="--tint:var(--t4)" aria-hidden="true"><div class="v-train"><span><i></i><b class="ck"></b></span><span><i></i><b class="ck"></b></span><span><i></i><b class="ck"></b></span></div></div>
-        <b data-count="110" data-dec="0">110</b>
-        <span>automated tests keeping that agent honest, plus ruff and mypy</span>
-        <ul class="src"><li>pytest</li><li>MCP Agent Database</li></ul>
+        <div class="mviz" style="--tint:var(--t4)" aria-hidden="true"><div class="v-train"><span><i></i><b class="ck"></b></span><span class="wip"><i></i><b class="sp"></b></span></div></div>
+        <b data-count="1.39" data-dec="2">1.39</b>
+        <span>grade average after my first M.Sc. semester, where 1.0 is the best German grade</span>
+        <ul class="src"><li>HFT Stuttgart</li><li>30 ECTS</li></ul>
       </li>
     </ul>
   </section>
 
-  <section class="career" id="career" data-pin data-scene="career">
-    <div class="stick">
-      <div class="wrap career-in">
-        <div class="career-top">
-          <div>
-            <p class="lbl"><span><b>04</b> career chart</span><span>scrolling moves time forward</span></p>
-            <h2 data-dev="training_history.log">Training history</h2>
-          </div>
-          <p class="readout" aria-live="off"><b id="ro-date">November 2026</b><span id="ro-text">M.Sc. at HFT Stuttgart, with AI agents and RAG on the side.</span></p>
-        </div>
-        <div class="gantt">
-          <div class="g-body">
-            <div class="g-axis" aria-hidden="true">
-              <span style="left:0">2023</span><span style="left:calc(100%*12/60)">2024</span><span style="left:calc(100%*24/60)">2025</span><span style="left:calc(100%*36/60)">2026</span><span style="left:calc(100%*48/60)">2027</span>
-            </div>
-            <div class="g-over" aria-hidden="true"><div class="g-today" id="g-today"><b id="g-today-l">Today</b></div></div>
-            <ol>
-              <li class="g-row" data-say="studying for my B.E. in AI and Data Science in Pune"><span class="g-label">B.E. AI and Data Science <small>SPPU, Pune. 2020 to 2024</small></span><div class="g-track"><span class="g-bar edu from-before" style="--s:0;--e:16"></span></div></li>
-              <li class="g-row" data-say="software copyright registered for the sentiment research"><span class="g-label">Software copyright registered <small>Government of India. May 2024</small></span><div class="g-track"><span class="g-dia" style="--s:16.9"></span></div></li>
-              <li class="g-row" data-say="Application Developer at Accenture"><span class="g-label">Application Developer <small>Accenture, Pune. Oct 2024 to Feb 2025</small></span><div class="g-track"><span class="g-bar work" style="--s:21;--e:25.5"></span></div></li>
-              <li class="g-row" data-say="Data Analyst (ML Engineer) at Leejam Sports"><span class="g-label">Data Analyst (ML Engineer) <small>Leejam Sports, Riyadh. Feb 2025 to Feb 2026</small></span><div class="g-track"><span class="g-bar work" style="--s:25.5;--e:37.5"></span></div></li>
-              <li class="g-row" data-say="M.Sc. Software Technology at HFT Stuttgart"><span class="g-label">M.Sc. Software Technology <small>HFT Stuttgart. Since March 2026</small></span><div class="g-track"><span class="g-bar edu ongoing" style="--s:38;--e:60"></span></div></li>
-              <li class="g-row" data-say="building AI agents and RAG systems"><span class="g-label">AI agents and RAG projects <small>Open source, on GitHub. Ongoing</small></span><div class="g-track"><span class="g-bar prog" style="--s:39;--e:60"></span></div></li>
-              <li class="g-row" data-future data-say="your team"><span class="g-label">Your team <small>Unassigned. Could be mine.</small></span><div class="g-track"><span class="g-bar open" style="--s:47;--e:60"></span></div></li>
-            </ol>
-          </div>
-          <p class="legend"><span><i class="k-edu"></i>Study</span><span><i class="k-work"></i>Work</span><span><i class="k-train"></i>Milestones</span><span><i class="k-prog"></i>In progress</span><span><i class="k-open"></i>Unassigned</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="sec wrap" id="work">
     <header class="hd">
-      <p class="lbl"><span><b>05</b> work delivered</span></p>
+      <p class="lbl"><span><b>04</b> work delivered</span></p>
       <h2 data-dev="git log --author=aditya">Work delivered</h2>
       <p class="sub">Most recent first.</p>
     </header>
@@ -1233,7 +1208,14 @@ html.covered{overflow:hidden}
         <div>
           <h3>Data Analyst (ML Engineer)</h3>
           <p class="org">Leejam Sports Company, Riyadh, Saudi Arabia</p>
-          <p class="what">Built churn-prediction models on the behaviour of more than 250,000 monthly members and put them into production, so retention campaigns could target the segments most likely to leave. Also built an automated LLM pipeline, with OpenAI APIs and open-source models, that pulls customer concerns from Instagram, Facebook and Twitter, then sorts and summarises them.</p>
+          <p class="what">Built churn-prediction models (Logistic Regression, Random Forest, XGBoost) on the behaviour of more than 250,000 monthly members and put them into production. They picked out the high-risk segments for retention campaigns, and 94% of the targeted members stayed.</p>
+          <ul class="pts">
+            <li>Automated reading of InBody fitness reports with OCR (Tesseract), turned the health metrics into a user-retention dataset, and ran the pipeline on Microsoft Fabric so it updates in real time and feeds the company app.</li>
+            <li>Built an LLM pipeline with OpenAI APIs and open-source models that pulls customer concerns from Instagram, Facebook and Twitter, then sorts and summarises them.</li>
+            <li>Collected FitnessTime app reviews from the Google Play Store and Apple App Store with Python and Selenium, summarised them with a small LLM and sent scheduled reports to the team improving the app.</li>
+            <li>Researched competitor prices across areas and used the results to set prices for each area.</li>
+            <li>Gathered requirements from the marketing, sales and operations teams and reported results to my manager and the CTO. Customer names and other sensitive data were masked before any analysis.</li>
+          </ul>
         </div>
       </li>
       <li class="lift">
@@ -1243,15 +1225,24 @@ html.covered{overflow:hidden}
           <h3>Application Developer</h3>
           <p class="org">Accenture, Pune, India</p>
           <p class="what">Added new features to existing enterprise applications through REST and OpenAI APIs, including chatbot interfaces and AI workloads. Deployed them on Azure App Services and Azure Functions through CI/CD pipelines in Azure DevOps, with GDPR-aligned security for the data they handled.</p>
+          <ul class="pts">
+            <li>Delivered features in Scrum sprints as part of an agile team.</li>
+            <li>Wrote and improved the business owner cases that described what each new feature had to do.</li>
+          </ul>
         </div>
       </li>
       <li class="lift">
-        <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M6 3 H16 L21 8 V23 H6 Z M16 3 V8 H21 M9.5 13 H17 M9.5 17 H17"/></svg>
-        <p class="when">B.E. research, 2024</p>
+        <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M2.5 10 L13 5 L23.5 10 L13 15 Z M7 12.3 V17.5 C10 20 16 20 19 17.5 V12.3 M23.5 10 V15.5"/></svg>
+        <p class="when">Mar 2023 to Sep 2024</p>
         <div>
-          <h3>Research co-author</h3>
-          <p class="org">Savitribai Phule Pune University, with Dr. Sarika Amitraj Panwar</p>
-          <p class="what">Compared a lexicon approach (VADER), eight supervised ML models and LLMs (Gemma, LLaMA) for sentiment analysis on 1.6 million tweets. The fine-tuned Gemma reached 88%. The work became a co-authored paper and a registered software copyright.</p>
+          <h3>Data Science Specialist</h3>
+          <p class="org">Skyrise Education, remote</p>
+          <p class="what">Built and optimised ML classification models that predict which students will enrol in online degree programs and which will drop out mid-course.</p>
+          <ul class="pts">
+            <li>Built preprocessing and feature-extraction pipelines for raw student, lead and behaviour data with Pandas, NumPy and SQL, including cleaning and validation.</li>
+            <li>Deployed lightweight ML inference APIs and wrote data-ingestion scripts that connected the models to the internal CRM.</li>
+            <li>Worked in an Agile team and followed clean-code practices.</li>
+          </ul>
         </div>
       </li>
     </ol>
@@ -1260,9 +1251,9 @@ html.covered{overflow:hidden}
 
   <section class="sec wrap" id="projects" style="padding-bottom:clamp(20px,4vh,40px)">
     <header class="hd">
-      <p class="lbl"><span><b>06</b> projects</span></p>
+      <p class="lbl"><span><b>05</b> projects</span></p>
       <h2 data-dev="ls projects/">Projects</h2>
-      <p class="sub" data-dev="3 items">Three at a glance, then the first one in detail.</p>
+      <p class="sub" data-dev="4 items">Four at a glance, then the first one in detail.</p>
     </header>
     <div class="car" data-car data-r="up">
       <div class="car-track pcards">
@@ -1306,21 +1297,39 @@ html.covered{overflow:hidden}
           </div>
           <p>A private assistant for employee handbooks, HR policies and compliance SOPs. It runs entirely on local infrastructure, so confidential documents never leave it, and every answer cites its source file and chunk.</p>
           <ul class="tools"><li>Python</li><li>LangChain</li><li>Ollama</li><li>ChromaDB</li></ul>
-          <a class="more gh" href="https://github.com/Aditya74747/Employee-Policies-and-Compliance-RAG" target="_blank" rel="noopener">Code on GitHub</a>
+          <a class="more gh" href="https://github.com/Aditya74747/hr-policy-rag" target="_blank" rel="noopener">Code on GitHub</a>
         </article>
-        <article class="pcard glowy" id="p-senti" style="--tint:var(--t3)">
-          <p class="lbl"><span>03, research</span><span class="chip ok">Registered</span></p>
-          <h3>Sentiment analysis with LLMs</h3>
+        <article class="pcard glowy" id="p-legal" style="--tint:var(--t4)">
+          <p class="lbl"><span>03, nlp</span><span class="chip ok">Fine-tuned</span></p>
+          <h3>Legal Contract Analysis AI</h3>
           <div class="win">
-            <p class="win-bar"><span>sentiment140</span><span>1.6M tweets</span></p>
-            <ul class="acc" aria-hidden="true">
-              <li style="--v:62;--i:0"><span>Gradient Boosting</span><i></i><b>62%</b></li>
-              <li style="--v:81;--i:1"><span>VADER lexicon</span><i></i><b>81%</b></li>
-              <li class="best" style="--v:88;--i:2"><span>Gemma, fine-tuned</span><i></i><b>88%</b></li>
+            <p class="win-bar"><span>contract.pdf</span><span>48 clause types</span></p>
+            <ul class="rows" aria-hidden="true">
+              <li style="--i:0"><i>flag</i><b>Uncapped liability</b></li>
+              <li style="--i:1"><i>flag</i><b>Non-compete</b></li>
+              <li style="--i:2"><i>flag</i><b>Change of control</b></li>
+              <li style="--i:3"><i>score</i><b>Contract risk</b>0 to 100</li>
             </ul>
           </div>
-          <p>A lexicon approach, eight classical ML models and two LLMs, tested on the same 1.6 million tweets. The fine-tuned Gemma won, and the app behind it is a registered software copyright.</p>
-          <ul class="tools"><li>Python</li><li>Hugging Face</li><li>scikit-learn</li><li>Gemma, LLaMA</li></ul>
+          <p>A fine-tuned DistilBERT that sorts contract clauses into 48 types, with 89.8% test accuracy and 0.89 weighted F1. It flags risky clauses and gives the whole contract a risk score, in a Gradio app that reads PDF, DOCX and TXT.</p>
+          <ul class="tools"><li>Python</li><li>PyTorch</li><li>Hugging Face</li><li>Gradio</li></ul>
+          <a class="more gh" href="https://github.com/Aditya74747/legal-contract-analysis-ai" target="_blank" rel="noopener">Code on GitHub</a>
+        </article>
+        <article class="pcard glowy" id="p-ims" style="--tint:var(--t1)">
+          <p class="lbl"><span>04, coursework</span><span class="chip ok">HFT Stuttgart</span></p>
+          <h3>AutoParts Inventory System</h3>
+          <div class="win">
+            <p class="win-bar"><span>autoparts_ims</span><span>MySQL, 7 tables</span></p>
+            <ul class="rows" aria-hidden="true">
+              <li style="--i:0"><i>order</i><b>Supplier order</b>placed</li>
+              <li style="--i:1"><i>stock</i><b>Warehouse</b>received</li>
+              <li style="--i:2"><i>use</i><b>Factory floor</b>consumed</li>
+              <li style="--i:3"><i>alert</i><b>Low stock</b>reorder</li>
+            </ul>
+          </div>
+          <p>A Java Swing and MySQL desktop app that tracks spare parts for a car assembly plant, from supplier order to the factory floor. The business rules live in the database as 4 triggers, 5 stored procedures and transactions with rollback. It also has role-based logins, hashed passwords, a KPI dashboard and an audit trail.</p>
+          <ul class="tools"><li>Java</li><li>Java Swing</li><li>MySQL</li><li>JDBC</li></ul>
+          <a class="more gh" href="https://github.com/Aditya74747/AutoPartsIMS" target="_blank" rel="noopener">Code on GitHub</a>
         </article>
       </div>
       <div class="car-dots"></div>
@@ -1386,7 +1395,7 @@ html.covered{overflow:hidden}
 
   <section class="sec wrap" id="certificates">
     <header class="hd">
-      <p class="lbl"><span><b>07</b> research and recognition</span></p>
+      <p class="lbl"><span><b>06</b> research and recognition</span></p>
       <h2 data-dev="pytest">Research and recognition</h2>
       <p class="sub" data-dev="2 passed, 1 pending">Two done, one in progress.</p>
     </header>
@@ -1407,7 +1416,7 @@ html.covered{overflow:hidden}
         <div class="cert-top"><span class="cert-ic" style="--tint:var(--t2)" aria-hidden="true"><svg viewBox="0 0 20 20"><circle class="ring" cx="10" cy="10" r="7.5" stroke-dasharray="3 3"/><path class="hm" d="M10 10 V5.6"/><path class="hh" d="M10 10 L12.8 11.8"/></svg></span><span class="chip warn">In progress</span></div>
         <h3>M.Sc. Software Technology</h3>
         <p class="org">Hochschule für Technik Stuttgart. Since March 2026.</p>
-        <p>Training still running. This card turns green at graduation.</p>
+        <p>Training still running, with a grade average of 1.39 after the first semester. This card turns green at graduation.</p>
         <div class="progress" role="img" aria-label="In progress"></div>
       </li>
     </ul>
@@ -1415,17 +1424,21 @@ html.covered{overflow:hidden}
 
   <section class="sec wrap" id="education" style="padding-top:0">
     <header class="hd">
-      <p class="lbl"><span><b>08</b> education</span></p>
+      <p class="lbl"><span><b>07</b> education</span></p>
       <h2 data-dev="education.json">Education</h2>
     </header>
     <ul class="edu">
       <li data-r="up">
         <div>
-          <p class="lbl" style="margin-bottom:10px"><span>current, since March 2026</span></p>
+          <p class="lbl" style="margin-bottom:10px"><span>current, since March 2026, expected September 2027</span></p>
           <h3>M.Sc. Software Technology</h3>
           <p class="org">Hochschule für Technik Stuttgart, Germany</p>
+          <p class="grade"><b>1.39</b>grade average after the first semester (30 ECTS)<small>German scale, where 1.0 is the best grade</small></p>
         </div>
-        <p>The engineering half of ML engineering: building software that other people can run, test and rely on. The agent and RAG projects grew up alongside it.</p>
+        <div>
+          <p class="muted">The engineering half of ML engineering: building software that other people can run, test and rely on. The agent and RAG projects grew up alongside it.</p>
+          <ul class="tools"><li>Computational Intelligence</li><li>Database Systems II</li><li>Software Architecture</li><li>Software Project Management II</li></ul>
+        </div>
       </li>
       <li data-r="up">
         <div>
@@ -1433,6 +1446,7 @@ html.covered{overflow:hidden}
           <h3>B.E. Artificial Intelligence and Data Science</h3>
           <p class="org">Savitribai Phule Pune University (SPPU), Pune, India.</p>
           <p>A degree built around machine learning, data science and AI. It ended with a research project that I'm still proud of.</p>
+          <p class="grade"><b>9.2/10</b>GPA<small>German grade 1.4</small></p>
         </div>
         <div class="roles">
           <div class="role lift">
@@ -1445,6 +1459,16 @@ html.covered{overflow:hidden}
             <h4><span class="hl">Song genres from audio data</span></h4>
             <p>Machine learning in Python that sorts songs into genres from their audio features. On my GitHub.</p>
           </div>
+          <div class="role lift">
+            <small>leadership</small>
+            <h4><span class="hl">Founded the GeeksforGeeks chapter</span></h4>
+            <p>Started the college's GeeksforGeeks student chapter and led it as Chairperson to build a coding culture. I also worked with the Google Developer Student Club.</p>
+          </div>
+          <div class="role lift">
+            <small>award</small>
+            <h4><span class="hl">Subject topper in Bioinformatics</span></h4>
+            <p>Honoured by the college for the top score in Bioinformatics in the university exams.</p>
+          </div>
         </div>
       </li>
     </ul>
@@ -1453,7 +1477,7 @@ html.covered{overflow:hidden}
   <section class="sec wrap" id="skills" style="padding-top:0">
     <div class="stage kgs" data-r="up">
       <header class="kgs-head">
-        <p class="lbl"><span><b>09</b> feature set</span></p>
+        <p class="lbl"><span><b>08</b> feature set</span></p>
         <h2 data-dev="requirements.txt">Feature set</h2>
         <p class="sub" data-dev="Installed and working.">What you get when you deploy me. It starts as unlabelled data, then clusters itself into five branches.</p>
       </header>
@@ -1463,27 +1487,27 @@ html.covered{overflow:hidden}
         <section class="br br-pm l up" style="--c:#F0B429" aria-label="Machine learning">
           <span class="rel" aria-hidden="true">trains with</span>
           <button class="hub" type="button">Machine learning</button>
-          <ul class="lv"><li>PyTorch</li><li>scikit-learn</li><li>NumPy and Pandas</li><li>Hugging Face</li><li>Matplotlib and Seaborn</li></ul>
+          <ul class="lv"><li>PyTorch</li><li>scikit-learn and XGBoost</li><li>NumPy and Pandas</li><li>Hugging Face</li><li>Matplotlib and Seaborn</li></ul>
         </section>
         <section class="br br-eng r up" style="--c:#B3A3FF" aria-label="Generative AI">
           <span class="rel" aria-hidden="true">builds agents with</span>
           <button class="hub" type="button">Generative AI</button>
-          <ul class="lv"><li>LangChain and RAG</li><li>MCP and AI agents</li><li>OpenAI API</li><li>Ollama</li><li>Vector databases</li></ul>
+          <ul class="lv"><li>LangChain and RAG</li><li>MCP and AI agents</li><li>OpenAI API</li><li>Ollama</li><li>Vector databases</li><li>Copilot, ChatGPT, Claude</li></ul>
         </section>
         <section class="br br-data l" style="--c:#6FD3A0" aria-label="Engineering">
           <span class="rel" aria-hidden="true">ships with</span>
           <button class="hub" type="button">Engineering</button>
-          <ul class="lv"><li>Python and SQL</li><li>FastAPI and Flask</li><li>Docker</li><li>Git, GitHub, GitLab</li><li>Azure and Azure DevOps</li></ul>
+          <ul class="lv"><li>Python and SQL</li><li>Java and MySQL</li><li>FastAPI and Flask</li><li>Docker</li><li>Git, GitHub, GitLab</li><li>Azure and Azure DevOps</li></ul>
         </section>
         <section class="br br-soft r" style="--c:#F47B3E" aria-label="Data">
           <span class="rel" aria-hidden="true">digs into</span>
           <button class="hub" type="button">Data</button>
-          <ul class="lv"><li>Data modelling</li><li>DuckDB</li><li>Web scraping (Selenium, BeautifulSoup)</li><li>Microsoft Fabric</li><li>Data visualisation</li></ul>
+          <ul class="lv"><li>Data modelling</li><li>DuckDB</li><li>Web scraping (Selenium, BeautifulSoup)</li><li>OCR (Tesseract)</li><li>Microsoft Fabric</li><li>Data visualisation</li></ul>
         </section>
         <section class="br br-lang c up" style="--c:#C9C5F2" aria-label="Languages">
           <span class="rel" aria-hidden="true">speaks</span>
           <button class="hub" type="button">Languages</button>
-          <ul class="lv"><li>English, C1</li><li>German, B1</li></ul>
+          <ul class="lv"><li>English, C1 (IELTS 7.5)</li><li>German, B1.1</li></ul>
         </section>
         <div class="kg-dots" id="kg-dots" aria-hidden="true"></div>
       </div>
@@ -1513,7 +1537,7 @@ html.covered{overflow:hidden}
 
   <section class="sec wrap" id="risks" style="padding-top:0">
     <header class="hd">
-      <p class="lbl"><span><b>10</b> known limitations</span></p>
+      <p class="lbl"><span><b>09</b> known limitations</span></p>
       <h2 data-dev="KNOWN_ISSUES.md">Known limitations</h2>
       <p class="sub" data-dev="Won't fix.">Every honest model card has this section.</p>
     </header>
@@ -1521,7 +1545,7 @@ html.covered{overflow:hidden}
     <div class="rgrid car-track">
       <article class="rcard lift glowy"><p class="no"><span>L-01</span><span class="chip risk">High</span></p><h3>Asks for approval before anything irreversible. Including the last slice of pizza.</h3><dl><div><dt>impact</dt><dd>Nothing gets deleted by accident.</dd></div><div><dt>mitigation</dt><dd>None planned. Working as intended.</dd></div></dl></article>
       <article class="rcard lift glowy"><p class="no"><span>L-02</span><span class="chip risk">Certain</span></p><h3>Cites his sources. Even in casual conversation.</h3><dl><div><dt>impact</dt><dd>Restaurant tips arrive with footnotes.</dd></div><div><dt>mitigation</dt><dd>Risk accepted.</dd></div></dl></article>
-      <article class="rcard lift glowy"><p class="no"><span>L-03</span><span class="chip warn">Medium</span></p><h3>German is at B1. May give a confident answer to a slightly different question.</h3><dl><div><dt>impact</dt><dd>Mild hallucinations in meetings.</dd></div><div><dt>mitigation</dt><dd>More training data. Classes ongoing.</dd></div></dl></article>
+      <article class="rcard lift glowy"><p class="no"><span>L-03</span><span class="chip warn">Medium</span></p><h3>German is at B1.1. May give a confident answer to a slightly different question.</h3><dl><div><dt>impact</dt><dd>Mild hallucinations in meetings.</dd></div><div><dt>mitigation</dt><dd>More training data. Classes ongoing.</dd></div></dl></article>
       <article class="rcard lift glowy"><p class="no"><span>L-04</span><span class="chip warn">Medium</span></p><h3>Runs the model locally first. Every time.</h3><dl><div><dt>impact</dt><dd>The laptop doubles as a space heater.</dd></div><div><dt>mitigation</dt><dd>Ollama and patience.</dd></div></dl></article>
       <article class="rcard lift glowy"><p class="no"><span>L-05</span><span class="chip risk">Guaranteed</span></p><h3>Will write tests. 110 of them, if left unattended.</h3><dl><div><dt>impact</dt><dd>Fewer surprises in production.</dd></div><div><dt>mitigation</dt><dd>Please don't try.</dd></div></dl></article>
       <article class="rcard next lift"><p class="no"><span>L-06</span><span class="chip ok">Avoidable</span></p><h3>Someone else deploys him first.</h3><dl><div><dt>impact</dt><dd>Their models ship, not yours.</dd></div><div><dt>mitigation</dt><dd><a href="#contact">Get in touch</a></dd></div></dl></article>
@@ -1533,7 +1557,7 @@ html.covered{overflow:hidden}
   <section class="sec wrap contact" id="contact">
     <div class="contact-card glowy" data-r="up">
       <div>
-        <p class="lbl"><span><b>11</b> next steps</span><span data-dev="ping aditya">one action item, and it's yours</span></p>
+        <p class="lbl"><span><b>10</b> next steps</span><span data-dev="ping aditya">one action item, and it's yours</span></p>
         <h2>Deploy me on your problem.</h2>
         <p style="max-width:50ch">I'm open to working student roles in ML engineering and generative AI in and around Stuttgart. Email is the fastest way to reach me. Click the address to copy it.</p>
         <p class="mail"><a href="#contact" id="email" title="Click to copy">apghatage@gmail.com</a><button class="btn primary" id="copy" type="button">Copy email</button></p>
@@ -1632,34 +1656,11 @@ html.covered{overflow:hidden}
   all('.roll div',credits).forEach(function(d,i){d.style.setProperty('--d',i)});
 
   /* the two chapters driven by scroll position */
-  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var gRows=all('#career .g-row').map(function(r){
-    var b=r.querySelector('.g-bar,.g-dia');
-    return {row:r,el:b,s:parseFloat(b.style.getPropertyValue('--s')),e:parseFloat(b.style.getPropertyValue('--e')||'0'),dia:b.classList.contains('g-dia'),say:r.dataset.say,fut:r.hasAttribute('data-future')};
-  });
-  var gToday=$('g-today'),gTodayL=$('g-today-l'),roDate=$('ro-date'),roText=$('ro-text');
   var steps=all('#p-agent .step'),stepDots=all('#p-agent .step-dots i'),planImg=$('agent-plan'),pCount=$('p-count'),loraState=$('agent-state');
   /* one dot per benchmark task */
   var dotsBox=$('p-dots'),TASKS=14,tdots=[];
   for(var i=0;i<TASKS;i++){var d=document.createElement('i');d.className='on';dotsBox.appendChild(d);tdots.push(d)}
   var scenes={
-    career:function(el,t){
-      var k=Math.min(1,t/.78),m=k*46.5,fut=clamp((t-.8)/.18),mf=m+fut*13.5,act=[];
-      gRows.forEach(function(o){
-        var live;
-        if(o.dia){o.el.style.setProperty('--f',m>=o.s?1:0);live=Math.abs(m-o.s)<1.1&&k<1}
-        else{o.el.style.setProperty('--f',clamp((mf-o.s)/(o.e-o.s)).toFixed(4));live=o.fut?fut>0:(m>=o.s&&m<o.e)}
-        o.row.classList.toggle('live',live||(k>=1&&!o.fut&&!o.dia&&o.e>46.5));
-        if(live&&!o.fut)act.push(o.say);
-      });
-      gToday.style.left=(m/60*100)+'%';
-      var mo=Math.floor(m),label=MON[mo%12]+' '+(2023+Math.floor(mo/12));
-      if(k>=1){gTodayL.textContent='Today';roDate.textContent='November 2026'}
-      else{gTodayL.textContent=label;roDate.textContent=label}
-      var txt=fut>0?'Next up: the rest of the M.Sc. After that, your team.':(act.length?act.join(' + '):'Between chapters.');
-      txt=txt.charAt(0).toUpperCase()+txt.slice(1);
-      if(roText.textContent!==txt)roText.textContent=txt;
-    },
     lora:function(el,t){
       var s=Math.min(2,Math.floor(t*3));
       if(el._s!==s){el._s=s;steps.forEach(function(x,j){x.classList.toggle('now',j===s)});stepDots.forEach(function(x,j){x.classList.toggle('now',j<=s)})}
@@ -1867,7 +1868,7 @@ html.covered{overflow:hidden}
     else{
       if(mPicked){var pt=$(mPicked.getAttribute('href').slice(1));if(pt){var pr=pt.getBoundingClientRect();if(pr.top<vh*.6&&pr.bottom>vh*.15)best=mPicked}}
       if(!best)mTabs.forEach(function(a){
-        var h=a.getAttribute('href');if(h.charAt(0)!=='#'||h==='#credits'||h==='#p-rag'||h==='#p-senti')return;
+        var h=a.getAttribute('href');if(h.charAt(0)!=='#'||h==='#credits'||h==='#p-rag'||h==='#p-legal'||h==='#p-ims')return;
         var t=$(h.slice(1));if(!t)return;var top=t.getBoundingClientRect().top;
         if(top<=vh*.4&&top>bt){bt=top;best=a}
       });
@@ -1890,7 +1891,7 @@ html.covered{overflow:hidden}
   topEl.addEventListener('focusout',function(e){if(e.relatedTarget&&!topEl.contains(e.relatedTarget))megaClose()});
   document.addEventListener('pointerdown',function(e){if(mega.classList.contains('open')&&!topEl.contains(e.target))megaClose()});
   if('IntersectionObserver' in window){
-    var group={top:'m-about',about:'m-about',flow:'m-about',numbers:'m-about',career:'m-about',work:'m-work',certificates:'m-work',education:'m-work',skills:'m-work',projects:'m-projects','p-agent':'m-projects',offduty:'m-contact','p-more':'m-projects',risks:'m-contact',contact:'m-contact'};
+    var group={top:'m-about',about:'m-about',flow:'m-about',numbers:'m-about',work:'m-work',certificates:'m-work',education:'m-work',skills:'m-work',projects:'m-projects','p-agent':'m-projects',offduty:'m-contact','p-more':'m-projects',risks:'m-contact',contact:'m-contact'};
     var spy=new IntersectionObserver(function(entries){
       entries.forEach(function(en){
         var g=group[en.target.id];
@@ -1901,12 +1902,13 @@ html.covered{overflow:hidden}
   }
 
   /* soft light that follows the pointer on cards */
-  all('.glowy').forEach(function(el){
+  function glow(el){
     el.addEventListener('pointermove',function(e){
       var r=el.getBoundingClientRect();
       el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');
     },{passive:true});
-  });
+  }
+  all('.glowy').forEach(glow);
 
   /* how I work: drifting dots, pushed away by the pointer, pulled into the plan one by one */
   var stage=$('stage'),field=$('field'),FW=0,FH=0,fdots=[],fp={x:0,y:0,on:false},frun=false,ft0=0;
@@ -2082,7 +2084,7 @@ html.covered{overflow:hidden}
 
   /* swipe rows: one pill per card, the long one is the card in view */
   all('[data-car]').forEach(function(car){
-    var tr=car.querySelector('.car-track'),box=car.querySelector('.car-dots'),items=Array.prototype.slice.call(tr.children),btns=[],tk=false;
+    var tr=car.querySelector('.car-track'),box=car.querySelector('.car-dots'),items=[],btns=[],tk=false;
     function upd(){
       if(!btns.length)return;
       var x=tr.scrollLeft,best=0,bd=1e9,x0=items[0].offsetLeft;
@@ -2091,7 +2093,8 @@ html.covered{overflow:hidden}
       btns.forEach(function(b,i){b.classList.toggle('on',i===best)});
     }
     function build(){
-      var over=tr.scrollWidth-tr.clientWidth>8;
+      var over=tr.scrollWidth-tr.clientWidth>8,now=Array.prototype.slice.call(tr.children);
+      if(now.length!==items.length){items=now;box.innerHTML='';btns=[]}
       if(over&&!btns.length){
         items.forEach(function(it,i){
           var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show card '+(i+1)+' of '+items.length);
@@ -2102,13 +2105,86 @@ html.covered{overflow:hidden}
       upd();
     }
     tr.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;upd()})}},{passive:true});
-    window.addEventListener('resize',build);build();
+    window.addEventListener('resize',build);build();car.carBuild=build;
   });
   /* on touch screens there is no hover, so a project card plays its diagram while it is in view */
+  var liveIO=null;
   if('IntersectionObserver' in window&&window.matchMedia('(hover:none)').matches){
-    var liveIO=new IntersectionObserver(function(en){en.forEach(function(x){x.target.classList.toggle('live',x.isIntersecting)})},{threshold:.7});
+    liveIO=new IntersectionObserver(function(en){en.forEach(function(x){x.target.classList.toggle('live',x.isIntersecting)})},{threshold:.7});
     all('.pcard').forEach(function(c){liveIO.observe(c)});
   }
+
+  /* projects: every public GitHub repo that isn't already a hand-made card gets a card of its own.
+     New repos show up by themselves. To keep a repo off the site, give it the topic "hide-from-portfolio". */
+  (function(){
+    var USER='Aditya74747',KEY='ag-repos',track=document.querySelector('#projects .car-track');
+    if(!track||!window.fetch)return;
+    var SKIP=['aditya74747.github.io','aditya74747','mcp-agent-database','hr-policy-rag','employee-policies-and-compliance-rag','legal-contract-analysis-ai','autopartsims'];
+    var NOTAG=['hackathon','hackathon-project','github-pages','python','javascript','java','jupyter-notebook','html'];
+    var CAPS={ai:'AI',ml:'ML',llm:'LLM',llms:'LLMs',rag:'RAG',mcp:'MCP',api:'API',sql:'SQL',nlp:'NLP',dax:'DAX',lorawan:'LoRaWAN',iot:'IoT',gis:'GIS',co2:'CO2',ghg:'GHG',ui:'UI',cli:'CLI',ocr:'OCR',finops:'FinOps',greenops:'GreenOps',fastapi:'FastAPI',catboost:'CatBoost',maplibre:'MapLibre',numpy:'NumPy',yfinance:'yfinance',rest:'REST',d3:'D3',gpt:'GPT',bert:'BERT','3d':'3D'};
+    var WORDS=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'];
+    var TINTS=['--t2','--t3','--t4','--t1'],MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function words(s){return s.split(/[-_\s]+/).filter(Boolean).map(function(w,i){var l=w.toLowerCase();if(CAPS[l])return CAPS[l];return i===0||w!==l?w.charAt(0).toUpperCase()+w.slice(1):l}).join(' ')}
+    /* a description that starts with "Name: ..." gives the card its title, and the rest becomes the text */
+    function norm(s){return String(s).toLowerCase().replace(/[^a-z0-9]/g,'')}
+    function lead(r){var m=(r.description||'').match(/^([^:]{2,40}):\s*/);return m&&norm(m[1])===norm(r.name)?m:null}
+    function title(r){var m=lead(r);return m?m[1]:words(r.name)}
+    function blurb(r){
+      var m=lead(r),d=r.description?r.description.slice(m?m[0].length:0):'An open-source project on GitHub.';
+      d=d.charAt(0).toUpperCase()+d.slice(1);
+      return d.length>230?d.slice(0,227).replace(/\s+\S*$/,'')+'…':d;
+    }
+    function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+    function safe(u){return /^https:\/\//i.test(u||'')?u:''}
+    function card(r,n){
+      var a=el('article','pcard glowy');a.style.setProperty('--tint','var('+TINTS[n%TINTS.length]+')');a.id='gh-'+r.name.toLowerCase().replace(/[^a-z0-9-]/g,'-');
+      var demo=safe(r.homepage);
+      var lb=el('p','lbl');lb.appendChild(el('span',null,(n<10?'0':'')+n+', github'));lb.appendChild(el('span','chip ok',demo?'Live demo':'Open source'));a.appendChild(lb);
+      a.appendChild(el('h3',null,title(r)));
+      var w=el('div','win'),bar=el('p','win-bar');bar.appendChild(el('span',null,r.name));bar.appendChild(el('span',null,r.language||'repo'));w.appendChild(bar);
+      var rows=el('ul','rows'),d=new Date(r.created_at),u=new Date(r.pushed_at||r.updated_at);rows.setAttribute('aria-hidden','true');
+      [['lang',r.language||'mixed'],['started',MON[d.getMonth()]+' '+d.getFullYear()],['updated',MON[u.getMonth()]+' '+u.getFullYear()],[demo?'demo':'code',demo?'live online':'on GitHub']].forEach(function(x,i){
+        var li=el('li');li.style.setProperty('--i',i);li.appendChild(el('i',null,x[0]));li.appendChild(el('b',null,x[1]));rows.appendChild(li);
+      });
+      w.appendChild(rows);a.appendChild(w);
+      a.appendChild(el('p',null,blurb(r)));
+      var tags=(r.topics||[]).filter(function(t){return NOTAG.indexOf(t)<0}).slice(0,4);
+      if(!tags.length&&r.language)tags=[r.language];
+      if(tags.length){var ul=el('ul','tools');tags.forEach(function(t){ul.appendChild(el('li',null,words(t)))});a.appendChild(ul)}
+      var gh=el('a','more gh','Code on GitHub');gh.href=r.html_url;gh.target='_blank';gh.rel='noopener';a.appendChild(gh);
+      if(demo){var lv=el('a','more gh','Live demo');lv.href=demo;lv.target='_blank';lv.rel='noopener';a.appendChild(lv)}
+      return a;
+    }
+    function count(total){
+      var sub=document.querySelector('#projects .hd .sub');if(!sub)return;
+      var pm=(WORDS[total]||String(total))+' at a glance, then the first one in detail.',dev=total+' items';
+      sub.dataset.dev=dev;if(sub.dataset.pm!==undefined)sub.dataset.pm=pm;
+      sub.textContent=root.dataset.mode==='dev'?dev:pm;
+    }
+    function render(list){
+      var repos=list.filter(function(r){
+        return r&&!r.fork&&!r.archived&&!r.private&&SKIP.indexOf(String(r.name).toLowerCase())<0&&(r.topics||[]).indexOf('hide-from-portfolio')<0;
+      }).sort(function(a,b){return new Date(b.created_at)-new Date(a.created_at)});
+      if(!repos.length)return;
+      var base=track.children.length;
+      repos.forEach(function(r,i){var c=card(r,base+i+1);track.appendChild(c);glow(c);if(liveIO)liveIO.observe(c)});
+      count(track.children.length);
+      var car=track.closest('[data-car]');if(car&&car.carBuild)car.carBuild();
+      req();
+    }
+    var cached=null;
+    try{cached=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(e){}
+    if(cached&&Date.now()-cached.t<36e5&&Array.isArray(cached.d)){render(cached.d);return}
+    fetch('https://api.github.com/users/'+USER+'/repos?per_page=100&sort=created',{headers:{Accept:'application/vnd.github+json'}})
+      .then(function(r){if(!r.ok)throw 0;return r.json()})
+      .then(function(d){
+        if(!Array.isArray(d))return;
+        var slim=d.map(function(r){return {name:r.name,description:r.description,html_url:r.html_url,homepage:r.homepage,language:r.language,topics:r.topics,fork:r.fork,archived:r.archived,private:r.private,created_at:r.created_at,pushed_at:r.pushed_at,updated_at:r.updated_at}});
+        try{sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),d:slim}))}catch(e){}
+        render(slim);
+      })
+      .catch(function(){});
+  })();
 
   /* contact checklist */
   var todoN=$('todo-n'),tRead=$('todo-read'),tCopy=$('todo-copy'),tPlan=$('todo-plan'),tBtn=tPlan.querySelector('button');

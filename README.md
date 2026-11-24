@@ -2,7 +2,7 @@
 
 **A machine learning engineer's portfolio, written as a model card.**
 
-I build AI that cites its sources and asks before it acts. This site is my model card: what I've
+Turning data into decisions, and models into products. This site is my model card: what I've
 trained on, how I was evaluated, and my known limitations.
 
 Live site (once published): https://aditya74747.github.io/
@@ -15,10 +15,10 @@ results and an honest list of limitations. This site does the same for me.
 - **Model overview:** who I am, in four minutes
 - **How I work:** raw data in, a grounded answer with a source out (the dots dodge your cursor)
 - **In numbers:** four figures, each with its source
-- **Training history:** my career as a Gantt chart; scrolling moves time forward
-- **Work delivered:** Leejam Sports, Accenture and my B.E. research
-- **Projects:** MCP Agent Database, a privacy-first RAG assistant and LLM sentiment analysis,
-  with a scroll chapter where the agent stops and asks for approval
+- **Work delivered:** Leejam Sports, Accenture and Skyrise Education
+- **Projects:** MCP Agent Database, a privacy-first RAG assistant, a legal
+  contract analysis AI and an AutoParts inventory system, with a scroll chapter where the agent
+  stops and asks for approval
 - **Research and recognition:** registered software copyright, co-authored paper, M.Sc.
 - **Feature set:** my skills, which start as unlabelled dots and cluster themselves into five branches
 - **Off duty:** three photos outside the lab, captioned like test results
@@ -58,6 +58,10 @@ python -m http.server 8000
 - **Colours:** `:root` near the top of the `<style>` block holds the Human view colours,
   `:root[data-mode="dev"]` holds the Model view colours.
 - **Model view titles:** each heading has a `data-dev="..."` attribute with its code version.
+- **Projects from GitHub:** every public repo on github.com/Aditya74747 that isn't a fork or archived
+  gets a card automatically, newest first, after the four hand-made cards. The card uses the
+  repo's description, topics, language and website. To keep a repo off the site, add the topic
+  `hide-from-portfolio` to it on GitHub. The hand-made cards are listed in `SKIP` in `index.html`.
 
 ## Credits
 
