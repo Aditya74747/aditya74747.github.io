@@ -59,7 +59,8 @@ python -m http.server 8000
   `:root[data-mode="dev"]` holds the Model view colours.
 - **Model view titles:** each heading has a `data-dev="..."` attribute with its code version.
 - **Projects from GitHub:** every public repo on github.com/Aditya74747 that isn't a fork or archived
-  gets a card automatically, newest first, after the four hand-made cards. The card uses the
+  gets a card automatically. All cards, hand-made and automatic, are sorted newest first by the
+  date the repo was created on GitHub (a hand-made card names its repo in `data-repo`). The card uses the
   repo's description, topics, language and website. To keep a repo off the site, add the topic
   `hide-from-portfolio` to it on GitHub. The hand-made cards are listed in `SKIP` in `index.html`.
 

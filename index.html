@@ -1253,12 +1253,44 @@ html.covered{overflow:hidden}
     <header class="hd">
       <p class="lbl"><span><b>05</b> projects</span></p>
       <h2 data-dev="ls projects/">Projects</h2>
-      <p class="sub" data-dev="4 items">Four at a glance, then the first one in detail.</p>
+      <p class="sub" data-dev="4 items, newest first">Four projects, newest first. The MCP agent gets a closer look below.</p>
     </header>
     <div class="car" data-car data-r="up">
       <div class="car-track pcards">
-        <article class="pcard glowy" style="--tint:var(--t1)">
-          <p class="lbl"><span>01, ai agent</span><span class="chip ok">Open source</span></p>
+        <article class="pcard glowy" data-repo="legal-contract-analysis-ai" data-created="2026-10-21T11:47:14Z" id="p-legal" style="--tint:var(--t4)">
+          <p class="lbl"><span>01, nlp</span><span class="chip ok">Fine-tuned</span></p>
+          <h3>Legal Contract Analysis AI</h3>
+          <div class="win">
+            <p class="win-bar"><span>contract.pdf</span><span>48 clause types</span></p>
+            <ul class="rows" aria-hidden="true">
+              <li style="--i:0"><i>flag</i><b>Uncapped liability</b></li>
+              <li style="--i:1"><i>flag</i><b>Non-compete</b></li>
+              <li style="--i:2"><i>flag</i><b>Change of control</b></li>
+              <li style="--i:3"><i>score</i><b>Contract risk</b>0 to 100</li>
+            </ul>
+          </div>
+          <p>A fine-tuned DistilBERT that sorts contract clauses into 48 types, with 89.8% test accuracy and 0.89 weighted F1. It flags risky clauses and gives the whole contract a risk score, in a Gradio app that reads PDF, DOCX and TXT.</p>
+          <ul class="tools"><li>Python</li><li>PyTorch</li><li>Hugging Face</li><li>Gradio</li></ul>
+          <a class="more gh" href="https://github.com/Aditya74747/legal-contract-analysis-ai" target="_blank" rel="noopener">Code on GitHub</a>
+        </article>
+        <article class="pcard glowy" data-repo="AutoPartsIMS" data-created="2026-10-19T13:14:32Z" id="p-ims" style="--tint:var(--t1)">
+          <p class="lbl"><span>02, coursework</span><span class="chip ok">HFT Stuttgart</span></p>
+          <h3>AutoParts Inventory System</h3>
+          <div class="win">
+            <p class="win-bar"><span>autoparts_ims</span><span>MySQL, 7 tables</span></p>
+            <ul class="rows" aria-hidden="true">
+              <li style="--i:0"><i>order</i><b>Supplier order</b>placed</li>
+              <li style="--i:1"><i>stock</i><b>Warehouse</b>received</li>
+              <li style="--i:2"><i>use</i><b>Factory floor</b>consumed</li>
+              <li style="--i:3"><i>alert</i><b>Low stock</b>reorder</li>
+            </ul>
+          </div>
+          <p>A Java Swing and MySQL desktop app that tracks spare parts for a car assembly plant, from supplier order to the factory floor. The business rules live in the database as 4 triggers, 5 stored procedures and transactions with rollback. It also has role-based logins, hashed passwords, a KPI dashboard and an audit trail.</p>
+          <ul class="tools"><li>Java</li><li>Java Swing</li><li>MySQL</li><li>JDBC</li></ul>
+          <a class="more gh" href="https://github.com/Aditya74747/AutoPartsIMS" target="_blank" rel="noopener">Code on GitHub</a>
+        </article>
+        <article class="pcard glowy" data-repo="mcp-agent-database" data-created="2026-10-10T11:03:35Z" style="--tint:var(--t3)">
+          <p class="lbl"><span>03, ai agent</span><span class="chip ok">Open source</span></p>
           <h3>MCP Agent Database</h3>
           <div class="win">
             <p class="win-bar"><span>agent.log</span><span>approval on</span></p>
@@ -1281,8 +1313,8 @@ html.covered{overflow:hidden}
           <p>An AI agent with three MCP servers: a DuckDB database, a document search and a sandboxed file workspace. Anything that isn't read-only waits for a human.</p>
           <a class="more" href="#p-agent">See it in detail</a>
         </article>
-        <article class="pcard glowy" id="p-rag" style="--tint:var(--t2)">
-          <p class="lbl"><span>02, rag</span><span class="chip ok">Open source</span></p>
+        <article class="pcard glowy" data-repo="hr-policy-rag" data-created="2026-01-11T11:38:17Z" id="p-rag" style="--tint:var(--t2)">
+          <p class="lbl"><span>04, rag</span><span class="chip ok">Open source</span></p>
           <h3>Policies and compliance RAG</h3>
           <div class="win">
             <p class="win-bar"><span>hr_assistant</span><span>fully offline</span></p>
@@ -1298,38 +1330,6 @@ html.covered{overflow:hidden}
           <p>A private assistant for employee handbooks, HR policies and compliance SOPs. It runs entirely on local infrastructure, so confidential documents never leave it, and every answer cites its source file and chunk.</p>
           <ul class="tools"><li>Python</li><li>LangChain</li><li>Ollama</li><li>ChromaDB</li></ul>
           <a class="more gh" href="https://github.com/Aditya74747/hr-policy-rag" target="_blank" rel="noopener">Code on GitHub</a>
-        </article>
-        <article class="pcard glowy" id="p-legal" style="--tint:var(--t4)">
-          <p class="lbl"><span>03, nlp</span><span class="chip ok">Fine-tuned</span></p>
-          <h3>Legal Contract Analysis AI</h3>
-          <div class="win">
-            <p class="win-bar"><span>contract.pdf</span><span>48 clause types</span></p>
-            <ul class="rows" aria-hidden="true">
-              <li style="--i:0"><i>flag</i><b>Uncapped liability</b></li>
-              <li style="--i:1"><i>flag</i><b>Non-compete</b></li>
-              <li style="--i:2"><i>flag</i><b>Change of control</b></li>
-              <li style="--i:3"><i>score</i><b>Contract risk</b>0 to 100</li>
-            </ul>
-          </div>
-          <p>A fine-tuned DistilBERT that sorts contract clauses into 48 types, with 89.8% test accuracy and 0.89 weighted F1. It flags risky clauses and gives the whole contract a risk score, in a Gradio app that reads PDF, DOCX and TXT.</p>
-          <ul class="tools"><li>Python</li><li>PyTorch</li><li>Hugging Face</li><li>Gradio</li></ul>
-          <a class="more gh" href="https://github.com/Aditya74747/legal-contract-analysis-ai" target="_blank" rel="noopener">Code on GitHub</a>
-        </article>
-        <article class="pcard glowy" id="p-ims" style="--tint:var(--t1)">
-          <p class="lbl"><span>04, coursework</span><span class="chip ok">HFT Stuttgart</span></p>
-          <h3>AutoParts Inventory System</h3>
-          <div class="win">
-            <p class="win-bar"><span>autoparts_ims</span><span>MySQL, 7 tables</span></p>
-            <ul class="rows" aria-hidden="true">
-              <li style="--i:0"><i>order</i><b>Supplier order</b>placed</li>
-              <li style="--i:1"><i>stock</i><b>Warehouse</b>received</li>
-              <li style="--i:2"><i>use</i><b>Factory floor</b>consumed</li>
-              <li style="--i:3"><i>alert</i><b>Low stock</b>reorder</li>
-            </ul>
-          </div>
-          <p>A Java Swing and MySQL desktop app that tracks spare parts for a car assembly plant, from supplier order to the factory floor. The business rules live in the database as 4 triggers, 5 stored procedures and transactions with rollback. It also has role-based logins, hashed passwords, a KPI dashboard and an audit trail.</p>
-          <ul class="tools"><li>Java</li><li>Java Swing</li><li>MySQL</li><li>JDBC</li></ul>
-          <a class="more gh" href="https://github.com/Aditya74747/AutoPartsIMS" target="_blank" rel="noopener">Code on GitHub</a>
         </article>
       </div>
       <div class="car-dots"></div>
@@ -2137,9 +2137,9 @@ html.covered{overflow:hidden}
     function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
     function safe(u){return /^https:\/\//i.test(u||'')?u:''}
     function card(r,n){
-      var a=el('article','pcard glowy');a.style.setProperty('--tint','var('+TINTS[n%TINTS.length]+')');a.id='gh-'+r.name.toLowerCase().replace(/[^a-z0-9-]/g,'-');
+      var a=el('article','pcard glowy');a.id='gh-'+r.name.toLowerCase().replace(/[^a-z0-9-]/g,'-');
       var demo=safe(r.homepage);
-      var lb=el('p','lbl');lb.appendChild(el('span',null,(n<10?'0':'')+n+', github'));lb.appendChild(el('span','chip ok',demo?'Live demo':'Open source'));a.appendChild(lb);
+      var lb=el('p','lbl');lb.appendChild(el('span',null,'00, github'));lb.appendChild(el('span','chip ok',demo?'Live demo':'Open source'));a.appendChild(lb);
       a.appendChild(el('h3',null,title(r)));
       var w=el('div','win'),bar=el('p','win-bar');bar.appendChild(el('span',null,r.name));bar.appendChild(el('span',null,r.language||'repo'));w.appendChild(bar);
       var rows=el('ul','rows'),d=new Date(r.created_at),u=new Date(r.pushed_at||r.updated_at);rows.setAttribute('aria-hidden','true');
@@ -2157,7 +2157,7 @@ html.covered{overflow:hidden}
     }
     function count(total){
       var sub=document.querySelector('#projects .hd .sub');if(!sub)return;
-      var pm=(WORDS[total]||String(total))+' at a glance, then the first one in detail.',dev=total+' items';
+      var pm=(WORDS[total]||String(total))+' projects, newest first. The MCP agent gets a closer look below.',dev=total+' items, newest first';
       sub.dataset.dev=dev;if(sub.dataset.pm!==undefined)sub.dataset.pm=pm;
       sub.textContent=root.dataset.mode==='dev'?dev:pm;
     }
@@ -2166,9 +2166,19 @@ html.covered{overflow:hidden}
         return r&&!r.fork&&!r.archived&&!r.private&&SKIP.indexOf(String(r.name).toLowerCase())<0&&(r.topics||[]).indexOf('hide-from-portfolio')<0;
       }).sort(function(a,b){return new Date(b.created_at)-new Date(a.created_at)});
       if(!repos.length)return;
-      var base=track.children.length;
-      repos.forEach(function(r,i){var c=card(r,base+i+1);track.appendChild(c);glow(c);if(liveIO)liveIO.observe(c)});
-      count(track.children.length);
+      /* hand-made cards take their date from GitHub too, falling back to the date written in the HTML */
+      var made={};list.forEach(function(r){if(r&&r.name)made[norm(r.name)]=r.created_at});
+      all('[data-repo]',track).forEach(function(c){var d=made[norm(c.dataset.repo)];if(d)c.dataset.created=d});
+      repos.forEach(function(r){var c=card(r,0);c.dataset.created=r.created_at;track.appendChild(c);glow(c);if(liveIO)liveIO.observe(c)});
+      /* one list, newest first; then renumber and recolour so neighbours never share a tint */
+      var cards=Array.prototype.slice.call(track.children).sort(function(a,b){return new Date(b.dataset.created||0)-new Date(a.dataset.created||0)});
+      cards.forEach(function(c,i){
+        track.appendChild(c);
+        c.style.setProperty('--tint','var('+TINTS[i%TINTS.length]+')');
+        var n=c.querySelector('.lbl span');if(n)n.textContent=n.textContent.replace(/^\d+/,(i<9?'0':'')+(i+1));
+      });
+      track.scrollLeft=0;
+      count(cards.length);
       var car=track.closest('[data-car]');if(car&&car.carBuild)car.carBuild();
       req();
     }
